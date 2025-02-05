@@ -1,0 +1,169 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RZ Developer | РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅР°СЏ СЂР°Р·СЂР°Р±РѕС‚РєР°</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+  <svg class="stars" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="star">
+        <stop offset="0%" stop-color="white"/>
+        <stop offset="100%" stop-color="transparent"/>
+      </radialGradient>
+    </defs>
+  </svg>
+
+  <header>
+    <div class="logo">
+      <svg class="rz-logo" viewBox="0 0 200 100">
+        <defs>
+          <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)"/>
+        <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="logo-text">RZ</text>
+      </svg>
+    </div>
+    <nav>
+      <a href="#about">Рћ РЅР°СЃ</a>
+      <a href="#projects">РџСЂРѕРµРєС‚С‹</a>
+      <a href="#store">РњР°РіР°Р·РёРЅ</a>
+      <a href="#contact">РљРѕРЅС‚Р°РєС‚С‹</a>
+      <button id="profile-btn" class="profile-button">
+        <!-- Default icon shown when no avatar is set -->
+        <img src="https://via.placeholder.com/100" alt="Profile">
+      </button>
+    </nav>
+  </header>
+
+  <div id="profile-menu" class="profile-menu">
+    <div class="profile-header">
+      <h3>РџСЂРѕС„РёР»СЊ</h3>
+      <span class="close-menu">&times;</span>
+    </div>
+    <div class="profile-content">
+      <div class="balance-section">
+        <h4>Р‘Р°Р»Р°РЅСЃ</h4>
+        <p class="balance">0.00$</p>
+        <button class="deposit-btn">РџРѕРїРѕР»РЅРёС‚СЊ</button>
+        <p class="min-deposit">РњРёРЅРёРјР°Р»СЊРЅР°СЏ СЃСѓРјРјР°: 1$</p>
+      </div>
+      <div class="profile-tab-buttons">
+        <button class="tab-button active" data-tab="history">РСЃС‚РѕСЂРёСЏ</button>
+        <button class="tab-button" data-tab="settings">РќР°СЃС‚СЂРѕР№РєРё</button>
+      </div>
+      <div class="profile-tab active" id="history-tab">
+        <div class="transactions-list">
+          <!-- Transactions will be loaded dynamically -->
+        </div>
+      </div>
+      <div class="profile-tab" id="settings-tab">
+        <div class="settings-group">
+          <h4>РџСЂРѕС„РёР»СЊ</h4>
+          <div class="avatar-upload">
+            <img src="https://via.placeholder.com/100" id="profile-avatar" alt="Profile">
+            <label for="avatar-input" class="avatar-change">РР·РјРµРЅРёС‚СЊ</label>
+            <input type="file" id="avatar-input" accept="image/*" hidden>
+          </div>
+        </div>
+        <div class="settings-group">
+          <h4>РЈРІРµРґРѕРјР»РµРЅРёСЏ</h4>
+          <label class="toggle-switch">
+            <input type="checkbox" id="notifications-toggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <h4>Р”РІСѓС…С„Р°РєС‚РѕСЂРЅР°СЏ Р°СѓС‚РµРЅС‚РёС„РёРєР°С†РёСЏ</h4>
+          <label class="toggle-switch">
+            <input type="checkbox" id="2fa-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <h4>РЇР·С‹Рє РёРЅС‚РµСЂС„РµР№СЃР°</h4>
+          <select class="language-select">
+            <option value="ru">Р СѓСЃСЃРєРёР№</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="settings-group">
+          <h4>РўРµРјР° РёРЅС‚РµСЂС„РµР№СЃР°</h4>
+          <select class="theme-select">
+            <option value="dark">РўС‘РјРЅР°СЏ</option>
+            <option value="light">РЎРІРµС‚Р»Р°СЏ</option>
+            <option value="auto">РЎРёСЃС‚РµРјРЅР°СЏ</option>
+          </select>
+        </div>
+        <div class="settings-group">
+          <h4>РџСЂРёРІР°С‚РЅРѕСЃС‚СЊ</h4>
+          <label class="toggle-switch">
+            <input type="checkbox" id="privacy-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <h4>Push-СѓРІРµРґРѕРјР»РµРЅРёСЏ</h4>
+          <label class="toggle-switch">
+            <input type="checkbox" id="push-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <button class="save-settings">РЎРѕС…СЂР°РЅРёС‚СЊ РёР·РјРµРЅРµРЅРёСЏ</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section id="about">
+      <h1>РџСЂРѕС„РµСЃСЃРёРѕРЅР°Р»СЊРЅР°СЏ СЂР°Р·СЂР°Р±РѕС‚РєР°</h1>
+      <div class="about-content">
+        <p>РЇ - РѕРїС‹С‚РЅС‹Р№ СЂР°Р·СЂР°Р±РѕС‚С‡РёРє СЃ пѕћР»СѓР±РѕРєРёРј РїРѕРЅРёРјР°РЅРёРµРј СЃРѕРІСЂРµРјРµРЅРЅС‹С… С‚РµС…РЅРѕР»РѕРіРёР№ Рё Р±РµР·РѕРїР°СЃРЅРѕСЃС‚Рё. РЎРїРµС†РёР°Р»РёР·РёСЂСѓСЋСЃСЊ РЅР° СЃРѕР·РґР°РЅРёРё РІС‹СЃРѕРєРѕРЅР°РіСЂСѓР¶РµРЅРЅС‹С… СЃРёСЃС‚РµРј, РєСЂРёРїС‚РѕРІР°Р»СЋС‚РЅС‹С… РїР»Р°С‚С„РѕСЂРј Рё Р°РІС‚РѕРјР°С‚РёР·РёСЂРѕРІР°РЅРЅС‹С… СЂРµС€РµРЅРёР№.</p>
+        <p>РњРѕР№ РѕРїС‹С‚ РІРєР»СЋС‡Р°РµС‚ СЂР°Р·СЂР°Р±РѕС‚РєСѓ:</p>
+        <ul>
+          <li>РљСЂРёРїС‚РѕРІР°Р»СЋС‚РЅС‹С… Р±РёСЂР¶ Рё РѕР±РјРµРЅРЅРёРєРѕРІ</li>
+          <li>Р’С‹СЃРѕРєРѕРЅР°РіСЂСѓР¶РµРЅРЅС‹С… Р±РѕС‚РѕРІ РґР»СЏ Telegram Рё Discord</li>
+          <li>РђРІ!С‚РѕРјР°С‚РёР·РёСЂРѕРІР°РЅРЅС‹С… С‚РѕСЂРіРѕРІС‹С… СЃРёСЃС‚РµРј</li>
+          <li>РЎР»РѕР¶РЅС‹С… РІРµР±-РїСЂРёР»РѕР¶РµРЅРёР№</li>
+          <li>РњРѕР±РёР»СЊРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№ РґР»СЏ Android</li>
+          <li>Р”РµСЃРєС‚РѕРїРЅС‹С… РїСЂРёР»РѕР¶РµРЅРёР№</li>
+        </ul>
+        <p class="highlight-text">Р’Р°Р¶РЅРѕ: СЏ РЅРµ СѓС‡Р°СЃС‚РІСѓСЋ РІ СЃРѕР·РґР°РЅРёРё СЃРєР°Рј-РїСЂРѕРµРєС‚РѕРІ Рё РјРѕС€РµРЅРЅРёС‡РµСЃРєРёС… СЃС…РµРј.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Р РµР°Р»РёР·РѕРІР°РЅРЅС‹Рµ РїСЂРѕРµРєС‚С‹</h2>
+      <div class="projects-grid" id="projects-container">
+        <!-- Projects will be loaded dynamically -->
+      </div>
+    </section>
+
+    <section id="store">
+      <div id="products-container">
+        <!-- Products will be loaded dynamically -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>РЎРІСЏР·СЊ СЃРѕ РјРЅРѕР№</h2>
+      <div class="contact-links">
+        <a href="https://t.me/your_username" class="contact-button telegram">
+          <i class="fab fa-telegram-plane"></i> Р›РёС‡РЅС‹Рµ СЃРѕРѕР±С‰РµРЅРёСЏ
+        </a>
+        <a href="https://t.me/your_channel" class="contact-button telegram-channel">
+          <i class="fab fa-telegram"></i> Telegram РєР°РЅР°Р»
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://kit.fontawesome.com/1234567890.js" crossorigin="anonymous"></script>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
